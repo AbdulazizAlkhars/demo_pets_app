@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:farmapp/data.dart';
 import 'package:farmapp/constant.dart';
 
+//ignore_for_file: prefer_const_constructors
 class DetailPage extends StatelessWidget {
-  final PlanetInfo planetInfo;
+  final AnimalInfo animalInfo;
 
-  const DetailPage({Key key, this.planetInfo}) : super(key: key);
+  const DetailPage({Key key, this.animalInfo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class DetailPage extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 300),
                         Text(
-                          planetInfo.name,
+                          animalInfo.name,
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 56,
@@ -46,13 +47,13 @@ class DetailPage extends StatelessWidget {
                         Divider(color: Colors.black38),
                         SizedBox(height: 32),
                         Text(
-                          planetInfo.description,
+                          animalInfo.description,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 20,
-                            color: contentTextColor,
+                            color: accentColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -78,7 +79,7 @@ class DetailPage extends StatelessWidget {
                     height: 250,
                     padding: const EdgeInsets.only(left: 32.0),
                     child: ListView.builder(
-                        itemCount: planetInfo.images.length,
+                        itemCount: animalInfo.images.length,
                         scrollDirection:
                             Axis.horizontal, // make list scroll horizontal
                         itemBuilder: (context, index) {
@@ -90,7 +91,7 @@ class DetailPage extends StatelessWidget {
                             child: AspectRatio(
                                 aspectRatio: 1,
                                 child: Image.network(
-                                  planetInfo.images[index],
+                                  animalInfo.images[index],
                                   fit: BoxFit.cover,
                                 )),
                           );
@@ -102,14 +103,14 @@ class DetailPage extends StatelessWidget {
             Positioned(
               right: -64,
               child: Hero(
-                  tag: planetInfo.position,
-                  child: Image.asset(planetInfo.iconImage)),
+                  tag: animalInfo.position,
+                  child: Image.asset(animalInfo.iconImage)),
             ),
             Positioned(
               top: 60,
               left: 32,
               child: Text(
-                planetInfo.position.toString(),
+                animalInfo.position.toString(),
                 style: TextStyle(
                   fontFamily: 'Avenir',
                   fontSize: 247,

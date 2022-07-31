@@ -10,6 +10,7 @@ class BottomBar extends StatefulWidget {
   const BottomBar({key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _BottomBarState createState() => _BottomBarState();
 }
 
@@ -50,19 +51,19 @@ class _BottomBarState extends State<BottomBar> {
                           hoverColor: Colors.white, // tab button hover color
                           haptic: true, // haptic feedback
                           tabBorderRadius: 15,
-                          tabActiveBorder: Border.all(
-                              color: gradientStartColor,
-                              width: 1), // tab button border
+                          tabActiveBorder:
+                              Border.all(color: baseColor, width: 1),
+                          // tab button border
                           tabBorder: Border.all(
-                              color: gradientStartColor,
+                              color: accentColor,
                               width: 1), // tab button border
                           curve: Curves.easeIn, // tab animation curves
                           duration: Duration(
                               milliseconds: 500), // tab animation duration
                           gap: 8, // the tab button gap between icon and text
-                          color: Colors.white, // unselected icon color
+                          color: Colors.black, // unselected icon color
                           activeColor:
-                              Colors.white, // selected icon and text color
+                              Colors.black, // selected icon and text color
                           iconSize: 32, // tab button icon size
                           // selected tab background color
                           padding: EdgeInsets.symmetric(
@@ -70,15 +71,15 @@ class _BottomBarState extends State<BottomBar> {
                               vertical: 5), // navigation bar padding
                           tabs: [
                             GButton(
-                              icon: Icons.home_rounded,
+                              icon: Icons.home_filled,
                               text: 'Home',
                             ),
                             GButton(
-                              icon: Icons.explore_outlined,
+                              icon: Icons.explore,
                               text: 'Explore',
                             ),
                             GButton(
-                              icon: Icons.person_outline,
+                              icon: Icons.person,
                               text: 'Search',
                             ),
                           ]),

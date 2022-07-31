@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+//ignore_for_file: prefer_const_constructors
 class ExploreScreen extends StatelessWidget {
   static const routeName = 'explore-screen';
   @override
