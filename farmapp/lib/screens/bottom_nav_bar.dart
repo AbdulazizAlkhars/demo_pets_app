@@ -5,6 +5,7 @@ import 'package:farmapp/screens/profile_screen.dart';
 import 'package:farmapp/screens/explore_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+//ignore_for_file: prefer_const_constructors
 class BottomBar extends StatefulWidget {
   static const routeName = 'bottom-bar-screen';
   const BottomBar({key}) : super(key: key);
@@ -23,74 +24,58 @@ class _BottomBarState extends State<BottomBar> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            page[_currentIndex],
-            Positioned(
-              top: MediaQuery.of(context).size.height * 0.85,
-              left: 5,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Container(
-                  height: 60,
-                  width: 350,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Container(
-                      // color: gradientEndColor,
-                      margin: EdgeInsets.all(8),
-                      height: 50,
-                      child: GNav(
-                          onTabChange: (index) {
-                            setState(() => _currentIndex = index);
-                          },
-                          rippleColor: Colors
-                              .white, // tab button ripple color when pressed
-                          hoverColor: Colors.white, // tab button hover color
-                          haptic: true, // haptic feedback
-                          tabBorderRadius: 15,
-                          tabActiveBorder:
-                              Border.all(color: baseColor, width: 1),
-                          // tab button border
-                          tabBorder: Border.all(
-                              color: accentColor,
-                              width: 1), // tab button border
-                          curve: Curves.easeIn, // tab animation curves
-                          duration: Duration(
-                              milliseconds: 500), // tab animation duration
-                          gap: 8, // the tab button gap between icon and text
-                          color: Colors.black, // unselected icon color
-                          activeColor:
-                              Colors.black, // selected icon and text color
-                          iconSize: 32, // tab button icon size
-                          // selected tab background color
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 5), // navigation bar padding
-                          tabs: [
-                            GButton(
-                              icon: Icons.home_filled,
-                              text: 'Home',
-                            ),
-                            GButton(
-                              icon: Icons.explore,
-                              text: 'Explore',
-                            ),
-                            GButton(
-                              icon: Icons.person,
-                              text: 'Search',
-                            ),
-                          ]),
+    return Stack(
+      children: [
+        page[_currentIndex],
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.90,
+          left: 5,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SizedBox(
+              height: 60,
+              width: 350,
+              child: GNav(
+                  onTabChange: (index) {
+                    setState(() => _currentIndex = index);
+                  },
+                  rippleColor:
+                      accentColor, // tab button ripple color when pressed
+                  hoverColor: baseColor, // tab button hover color
+                  haptic: true, // haptic feedback
+                  // tabActiveBorder: Border.all(color: baseColor, width: 0),
+                  // // tab button border
+                  // tabBorder: Border.all(
+                  //     color: accentColor, width: 0), // tab button border
+                  curve: Curves.easeIn, // tab animation curves
+                  duration:
+                      Duration(milliseconds: 500), // tab animation duration
+                  gap: 8, // the tab button gap between icon and text
+                  color: secondaryTextColor, // unselected icon color
+                  activeColor: baseColor, // selected icon and text color
+                  iconSize: 32, // tab button icon size
+                  // selected tab background color
+                  tabBackgroundColor: accentColor.withOpacity(0.5),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 5), // navigation bar padding
+                  tabs: [
+                    GButton(
+                      icon: Icons.home_outlined,
+                      text: 'Home',
                     ),
-                  ),
-                ),
-              ),
+                    GButton(
+                      icon: Icons.explore_outlined,
+                      text: 'Explore',
+                    ),
+                    GButton(
+                      icon: Icons.person_outline,
+                      text: 'Profile',
+                    ),
+                  ]),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
